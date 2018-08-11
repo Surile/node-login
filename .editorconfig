@@ -1,0 +1,10 @@
+root =  true   #表示当前目录
+
+[*] #所有文件都使用该配置
+charset =  utf-8 #编码格式
+indent_style = space # tab缩进的样式，由 space 和 table 两种样式组成
+indent_size = 2 #缩进为2
+end_of_line = lf #以 lf 换行，默认 win 为 crlf，mac 和 linux为 lf
+insert_final_newline = true #末尾加一行空行
+trim_trailing_whitespace = true #去掉行尾多余空格
+insert_final_newline = true #在保存时以换行符为束结
