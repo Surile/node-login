@@ -1,7 +1,6 @@
-import api from './routes/api'
+import api from './routes'
 import Router from 'koa-router'
 import jwt from 'koa-jwt'
-import auth from './routes/auth'
 const Koa = require('koa')
 const json = require('koa-json')
 const bodyParser = require('koa-bodyparser')
@@ -19,10 +18,12 @@ app.use(logger())
 app.use(body)
 app.use(json({ pretty: false, param: 'pretty' }))
 app.use(cors())
-router.use('', auth.routes(), auth.allowedMethods()) // 所有走/api/打头的请求都需要经过jwt验证。
-router.use('/api', jwt({secret}), api.routes(), api.allowedMethods()) // 所有走/api/打头的请求都需要经过jwt验证。
+router.use('/v1', jwt({secret}).unless({
+  path: [/\/register/, /\/login/]
+}), api.routes(), api.allowedMethods()) // 所有走/api/打头的请求都需要经过jwt验证。
 
 app.use(router.routes()) // 将路由规则挂载到Koa上。
+app.use(router.allowedMethods())
 
 app.use(async (ctx, next) => {
   const start = new Date()

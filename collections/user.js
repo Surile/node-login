@@ -1,7 +1,7 @@
 import UserModel from '../schema/UserSchema'
-import crypto from 'crypto'
+// import crypto from 'crypto'
 import jsonwebtoken from 'jsonwebtoken'
-const md5 = crypto.createHash('md5')
+// const md5 = crypto.createHash('md5')
 const secret = 'node-login'
 
 const users = async (ctx) => {
@@ -18,13 +18,13 @@ const users = async (ctx) => {
 const register = async (ctx) => {
   const { body } = ctx.request
   if (!body.name && !body.password) {
-    ctx.statsu = 400
+    ctx.status = 400
     ctx.body = {
       error: '用户名和密码不能为空'
     }
     return
   }
-  body.password = md5.update(body.password).digest('hex')
+  // body.password = md5.update(body.password).digest('hex')
   let user = await UserModel.find({name: body.name})
   let email = await UserModel.find({email: body.email})
   if (!user.length && !email.length) {
@@ -35,13 +35,12 @@ const register = async (ctx) => {
       password
     }
     const reslut = await UserModel.create(createUser)
-    ctx.status = 400
     ctx.body = {
       message: '注册成功',
-      reslut
+      data: reslut
     }
   } else {
-    ctx.status = 406
+    ctx.status = 400
     ctx.body = {
       message: '用户名或邮箱已经存在'
     }
@@ -50,17 +49,15 @@ const register = async (ctx) => {
 const login = async (ctx) => {
   const { body } = ctx.request
   const findUser = await UserModel.findOne({name: body.name})
-  console.log(findUser)
   if (!findUser) {
-    ctx.status = 401
+    ctx.status = 400
     ctx.body = {
       message: '用户名错误'
     }
     return
   }
-  body.password = md5.update(body.password).digest('hex')
+  // body.password = md5.update(body.password).digest('hex')
   if (body.password === findUser.password) {
-    ctx.status = 400
     ctx.body = {
       message: '登录成功',
       data: {
@@ -69,7 +66,7 @@ const login = async (ctx) => {
       }
     }
   } else {
-    ctx.status = 401
+    ctx.status = 400
     ctx.body = {
       message: '密码错误'
     }
