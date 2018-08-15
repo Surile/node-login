@@ -1,9 +1,9 @@
 import { login, register, users } from '../collections/user'
 import KoaRouter from 'koa-router'
-const router = new KoaRouter()
+const apiRoutes = new KoaRouter()
 
-router.get('/users', users)
-router.post('/login', login)
-router.post('/register', register)
+apiRoutes.get('/users', users)
+apiRoutes.post('/login', login)
+apiRoutes.post('/register', register)
 
-export default router
+export default apiRoutes
