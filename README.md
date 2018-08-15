@@ -16,8 +16,7 @@
   + [Koa-router](https://github.com/alexmingoia/koa-router)
   + [mongoose](https://github.com/Automattic/mongoose)
   + [Jwt](https://github.com/auth0/node-jsonwebtoken)
-
-  除了以上的以外还有koa中间件
+  + [Koa中间件]()
 
 ### 本地运行
 
@@ -40,6 +39,6 @@
     npm start || yarn start
   ````
 
-### [前端项目](https://github.com/Surile/vue-login)
 
+###  [前端项目](https://github.com/Surile/vue-login)
 
