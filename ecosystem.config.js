@@ -1,7 +1,7 @@
 module.exports = {
   apps: [{
     name: 'API',
-    script: 'server.js',
+    script: './server.js',
     env: {
       NODE_ENV: 'development'
     },
@@ -17,8 +17,8 @@ module.exports = {
       port: '25000',
       ref: 'origin/master',
       repo: 'git@github.com:Surile/node-login.git',
-      path: '/home/heasy/www/node-login',
-      'post-deploy': 'yarn install'
+      path: '/www/node-login',
+      'post-deploy': 'yarn install && yarn start'
     }
   }
 }

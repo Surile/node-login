@@ -5,7 +5,7 @@
   "author": "夜雨",
   "license": "MIT",
   "scripts": {
-    "start": "pm2 start ./ecosystem.config.js",
+    "start": "pm2 start ./serve.js --watch",
     "deploy": "pm2 deploy ./ecosystem.config.js production"
   },
   "dependencies": {
