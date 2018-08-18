@@ -5,8 +5,7 @@
   "author": "夜雨",
   "license": "MIT",
   "scripts": {
-    "start": "pm2 start ./serve.js --watch",
-    "deploy": "pm2 deploy ./ecosystem.config.js production"
+    "start": "nodemon ./index.js --exec babel-node"
   },
   "dependencies": {
     "babel-polyfill": "^6.5.0",
