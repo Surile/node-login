@@ -45,6 +45,8 @@
     + 部署在阿里云服务器
     + api 接口：[http://api.surile.cn/v1](http://api.surile.cn/v1)
   + pm2支持 es6
+    + 解决方法
+      + 重新建一个 server.js ，写入require('child_process').exec(`babel-node ./index.js`)这行代码，修改 package.json为pm2 start ./server.js
   + 部署 HTTPS 证书
 
 ####  前端项目
