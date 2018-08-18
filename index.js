@@ -1,6 +1,7 @@
 import apiRoutes from './routes'
 import Router from 'koa-router'
 import jwt from 'koa-jwt'
+import historyApiFallback from 'koa2-connect-history-api-fallback'
 const Koa = require('koa')
 const json = require('koa-json')
 const bodyParser = require('koa-bodyparser')
@@ -15,6 +16,7 @@ const app = new Koa()
 
 app.use(bodyParser())
 app.use(logger())
+app.use(historyApiFallback())
 app.use(body)
 app.use(json({ pretty: false, param: 'pretty' }))
 app.use(cors())
